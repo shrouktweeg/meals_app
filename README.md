@@ -1,16 +1,58 @@
-# meal_app
+#  Meal App
 
-A new Flutter project.
+A Flutter application built as part of a learning course. The app helps users explore meals, view details, and add their own meals with a smooth and interactive experience.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+##  Features
 
-A few resources to get you started if this is your first Flutter project:
+-  Onboarding Screens  
+  - Implemented using Carousel Slider  
+  - Includes Dots Indicator  
+  - Saves user data using Shared Preferences  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+-  Home Screen  
+  - Displays meals dynamically  
+  - Uses FutureBuilder  
+  - Local database using Sqflite  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-  Add Meal Screen  
+  - Add new meals to database  
+
+-  Meal Details Screen  
+  - View meal details  
+
+-  Image Loading  
+  - Cached Network Image  
+
+
+##  Technologies Used
+
+- Flutter & Dart  
+- MVVM Architecture  
+- Sqflite  
+- Shared Preferences  
+- Cached Network Image  
+
+
+##  Dependencies
+
+sqflite:
+shared_preferences:
+cached_network_image:
+carousel_slider:
+smooth_page_indicator:
+
+
+##  Getting Started
+
+git clone https://github.com/shrouktweeg/meals_app
+cd meal_app
+flutter pub get
+flutter run
+
+
+##  Notes
+
+- This project is part of a Flutter course  
+- Focuses on clean architecture and local storage  
+
