@@ -1,4 +1,4 @@
-🚀 **Meal App – Flutter Project (Updated Version)**
+ **Meal App – Flutter Project (Updated Version)**
 
 I’m excited to share an updated version of my Meal App, originally built as part of my Flutter learning journey.
 
