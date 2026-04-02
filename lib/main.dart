@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:meal_app/core/networking/dio_helper.dart';
 import 'package:meal_app/features/home/data/db_helper/db_helper.dart';
 import 'package:meal_app/features/home/data/meal_item_model.dart';
 import 'package:meal_app/features/on_boarding/services/on_boarding_services.dart';
@@ -9,6 +10,7 @@ import 'core/styling/theme_app.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  DioHelper.initDio();
   DataBaseHelper dbHelper= DataBaseHelper.dataBaseHelper;
   dbHelper.insertMeal(MealItemModel(imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOX2YyS0W1LnrD5eyd-7Q9kvO1JGvE80AXXA&s',
       mealName: 'MSG Smash Burgers',

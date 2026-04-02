@@ -5,6 +5,8 @@ import 'package:meal_app/core/navigation/routes_name.dart';
 import 'package:meal_app/core/styling/app_color.dart';
 import 'package:meal_app/core/styling/app_style.dart';
 import 'package:meal_app/features/home/data/meal_item_model.dart';
+import 'package:meal_app/features/home/home_api_service/home_api_service.dart';
+import 'package:meal_app/features/home/models/meal_model.dart';
 
 import '../data/db_helper/db_helper.dart';
 import 'custom_item_widget.dart';
@@ -21,7 +23,44 @@ class CustomGridViewBuilder extends StatefulWidget {
 class _CustomGridViewBuilderState extends State<CustomGridViewBuilder> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(future: dbHelper.getAllMeals(), builder: (context,snapshot){
+    return FutureBuilder(future: HomeApiService().getMeals(firstChar: 'b'), builder: (context,snapshot){
+      if(snapshot.connectionState==ConnectionState.waiting){
+        return Center(child: CircularProgressIndicator(color: AppColor.primaryColor,),);
+      }
+     else if(snapshot.hasData){
+        MealResponse mealItemModel=snapshot.data as MealResponse;
+
+        if(mealItemModel.meals!.isEmpty){
+          return Center(child: Text('No Data Found',style: AppStyle.titleStyle,));
+        }
+        else{
+          return GridView.builder(
+              itemCount:mealItemModel.meals!.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
+                  crossAxisSpacing: 22.w,
+                  mainAxisSpacing: 20.h,
+                  childAspectRatio: 0.9
+              ),
+              itemBuilder:(context,index){
+                Meal meal=mealItemModel.meals![index];
+                return CustomItemWidget(meal:meal,onTap: (){
+                  GoRouter.of(context).pushNamed(RoutesName.mealDetails,extra:meal.idMeal);
+                },);
+              } );
+
+        }
+       }
+       else if(snapshot.hasError){
+         return Center(child: Text("${snapshot.error}",));
+       }
+       return  Container();
+    }
+    );
+  }
+}
+/*
+data base
+FutureBuilder(future: dbHelper.getAllMeals(), builder: (context,snapshot){
       if(snapshot.connectionState==ConnectionState.waiting){
         return Center(child: CircularProgressIndicator(color: AppColor.primaryColor,),);
       }
@@ -48,6 +87,4 @@ class _CustomGridViewBuilderState extends State<CustomGridViewBuilder> {
        }
        return  Container();
     }
-    );
-  }
-}
+ */

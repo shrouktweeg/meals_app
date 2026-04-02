@@ -28,7 +28,7 @@ class CustomIconBack extends StatelessWidget {
                 color: Color(0xffEDEDED)
             ),
           ),
-          child: Center(child: Icon(Icons.arrow_back,size: 20.sp,color: AppColor.lightBlackColor,)),
+          child: Center(child: Icon(Icons.arrow_back,size: 20.sp,color: AppColor.whiteColor,)),
 
 
         ),
